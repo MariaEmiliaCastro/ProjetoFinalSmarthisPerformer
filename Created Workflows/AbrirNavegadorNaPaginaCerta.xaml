@@ -1,0 +1,130 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="AbrirNavegadorNaPaginaCerta" VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="605,930" sap2010:WorkflowViewState.IdRef="AbrirNavegadorNaPaginaCerta_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uix="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>UiPath.UIAutomationNext.Enums</x:String>
+      <x:String>UiPath.UIAutomationCore.Contracts</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>UiPath.UIAutomationNext.Activities</x:String>
+      <x:String>UiPath.Platform.ObjectLibrary</x:String>
+      <x:String>UiPath.Shared.Activities</x:String>
+      <x:String>UiPath.Platform.Triggers</x:String>
+      <x:String>UiPath.Platform.Triggers.Scope</x:String>
+      <x:String>UiPath.UIAutomationNext.Contracts</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>System.Private.CoreLib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>System.ObjectModel</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Platform</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Testing.Activities</AssemblyReference>
+      <AssemblyReference>NPOI</AssemblyReference>
+      <AssemblyReference>System.Console</AssemblyReference>
+      <AssemblyReference>System.Private.Uri</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.ComponentModel</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.TypeConverter</AssemblyReference>
+      <AssemblyReference>System.Configuration.ConfigurationManager</AssemblyReference>
+      <AssemblyReference>System.Security.Permissions</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>System.Private.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Formatters</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Primitives</AssemblyReference>
+      <AssemblyReference>System.Private.DataContractSerialization</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence sap2010:Annotation.AnnotationText="Abre o navegador na página correta para emissão das certidões" DisplayName="AbrirNavegadorNaPaginaCerta" sap:VirtualizedContainerService.HintSize="476,865" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <uix:NApplicationCard WebDriverMode="{x:Null}" AttachMode="ByInstance" CloseMode="Never" DisplayName="Use Browser Edge: Nova guia" sap:VirtualizedContainerService.HintSize="434,596" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InteractionMode="Simulate" OpenMode="Always" ScopeGuid="cdee3cf8-0f25-408d-b558-a1e2464f533f" Version="V2" WindowResize="Maximize">
+      <uix:NApplicationCard.Body>
+        <ActivityAction x:TypeArguments="x:Object">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
+          </ActivityAction.Argument>
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="376,380" sap2010:WorkflowViewState.IdRef="Sequence_2">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <uix:NClick ClickType="Single" DisplayName="Click 'Certidão negativa'" sap:VirtualizedContainerService.HintSize="334,156" sap2010:WorkflowViewState.IdRef="NClick_6" InteractionMode="DebuggerApi" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="cdee3cf8-0f25-408d-b558-a1e2464f533f" Version="V1">
+              <uix:NClick.Target>
+                <uix:TargetAnchorable BrowserURL="https://portal.tcu.gov.br/certidoes/" DesignTimeRectangle="1270, 422, 146, 43" ElementType="Text" FriendlyName="'Certidão negativa'" FullSelectorArgument="&lt;webctrl aaname='Certidão negativa de licitante inidôneo' parentid='lista-servicos' tag='SPAN' /&gt;" FuzzySelectorArgument="&lt;webctrl aaname='Certidão negativa de licitante inidôneo' parentid='lista-servicos' tag='SPAN' type='' class='link_servico_direto' check:innerText='Certidão negativa de licitante inidôneo' /&gt;" Guid="372d617f-4619-440e-a868-b758fad73cd8" ImageBase64="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" InformativeScreenshot="63e1c0f8ae6eda8adc8bd1d265369e84.png" ScopeSelectorArgument="&lt;html app='msedge.exe' title='Certidões | Portal TCU' /&gt;" SearchSteps="FuzzySelector, Image" Visibility="Interactive" />
+              </uix:NClick.Target>
+            </uix:NClick>
+            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[&quot;Cricou&quot;]" />
+          </Sequence>
+        </ActivityAction>
+      </uix:NApplicationCard.Body>
+      <uix:NApplicationCard.TargetApp>
+        <uix:TargetApp Area="1358, -8, 1936, 1048" BrowserType="Edge" IconBase64="iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAWJQAAFiUBSVIk8AAAAQhJREFUWEftl9ENwjAMRDsCIzAKm8AGsAGMwEaMwgiMQP0qTkKy09YkfCDypJNKnFzckLTu0AnYmW6mh+nZUHjuTbOcTdHglmKOkINJnS6mjSlCfTLgdTJpLKvsYIkI0nGOTxIQ3Bhjmcsh49Kdi5oE8GYs+8ux1libczv9ylOcZ20CWsZaOYqBgKup9pg6ioHG9AR6Ar+XAG8wjtz9dS2y7SKdAEaKYSyy7UIxRymAiWKYi2y7UMxRCvCaxghjrkW2XaQTaE1PoCdQnEfHZ6kkq0ElWZiAilIqnm9xNDFHWJRSKis7KuOWK4HX+zdH9IieaFXvzWlxhXl66e9oJfYXnuEHyT8zDCPMjw3PbnWtNQAAAABJRU5ErkJggg==" InformativeScreenshot="0b69d1f3f3fb9aebc07123f3b6f1882b.png" Selector="&lt;html app='msedge.exe' url='https://portal.tcu.gov.br/certidoes/' /&gt;" Url="https://portal.tcu.gov.br/certidoes/" />
+      </uix:NApplicationCard.TargetApp>
+    </uix:NApplicationCard>
+    <ui:Click AlterIfDisabled="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" ClickType="CLICK_DOUBLE" DelayBefore="1000" DisplayName="Ir para a página de emissão de certidão" sap:VirtualizedContainerService.HintSize="434,106" sap2010:WorkflowViewState.IdRef="Click_2" KeyModifiers="None" MouseButton="BTN_LEFT" SimulateClick="True">
+      <ui:Click.CursorPosition>
+        <ui:CursorPosition Position="Center">
+          <ui:CursorPosition.OffsetX>
+            <InArgument x:TypeArguments="x:Int32" />
+          </ui:CursorPosition.OffsetX>
+          <ui:CursorPosition.OffsetY>
+            <InArgument x:TypeArguments="x:Int32" />
+          </ui:CursorPosition.OffsetY>
+        </ui:CursorPosition>
+      </ui:Click.CursorPosition>
+      <ui:Click.Target>
+        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="a80a3762-4989-4d64-bda5-dc8b23f9e29d" InformativeScreenshot="f3deb326cf4a094ee1ff19b2d97f4e01" Selector="&lt;html app='msedge.exe' title='Relação de inabilitados' /&gt;&lt;webctrl aria-role='menuitem' aaname='Emitir certidão negativa' /&gt;">
+          <ui:Target.TimeoutMS>
+            <InArgument x:TypeArguments="x:Int32" />
+          </ui:Target.TimeoutMS>
+          <ui:Target.WaitForReady>
+            <InArgument x:TypeArguments="ui:WaitForReady" />
+          </ui:Target.WaitForReady>
+        </ui:Target>
+      </ui:Click.Target>
+    </ui:Click>
+  </Sequence>
+</Activity>
