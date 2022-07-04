@@ -1,0 +1,91 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="KillBrowser" VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="605,547" sap2010:WorkflowViewState.IdRef="KillBrowser_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:uix="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>UiPath.UIAutomationNext.Enums</x:String>
+      <x:String>UiPath.UIAutomationCore.Contracts</x:String>
+      <x:String>UiPath.UIAutomationNext.Activities</x:String>
+      <x:String>UiPath.Platform.ObjectLibrary</x:String>
+      <x:String>UiPath.Shared.Activities</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>System.Private.CoreLib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>System.ComponentModel</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Primitives</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.TypeConverter</AssemblyReference>
+      <AssemblyReference>System.ObjectModel</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.EventBasedAsync</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Platform</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Testing.Activities</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="KillBrowser" sap:VirtualizedContainerService.HintSize="476,482" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <uix:NApplicationCard WebDriverMode="{x:Null}" AttachMode="ByInstance" DisplayName="Use Browser Edge: Emitir certidão negativa" sap:VirtualizedContainerService.HintSize="434,390" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InteractionMode="DebuggerApi" ScopeGuid="3f77ef44-57f5-41c7-9b20-4d5fff0d6c19" Version="V2">
+      <uix:NApplicationCard.Body>
+        <ActivityAction x:TypeArguments="x:Object">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
+          </ActivityAction.Argument>
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="376,174" sap2010:WorkflowViewState.IdRef="Sequence_2">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <uix:NNavigateBrowser Action="CloseTab" DisplayName="Navigate Browser - Close Tab" sap:VirtualizedContainerService.HintSize="334,81" sap2010:WorkflowViewState.IdRef="NNavigateBrowser_1" Version="V1" />
+          </Sequence>
+        </ActivityAction>
+      </uix:NApplicationCard.Body>
+      <uix:NApplicationCard.TargetApp>
+        <uix:TargetApp Area="1358, -8, 1936, 1048" BrowserType="Edge" IconBase64="iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAANlSURBVGhD7ZprTxpBFIb51D/TH9svJE2rBZGbu+AqS6FiREK1tl6KtmqUXiSmlw/VYksvsSTNdN5Thqy7A+zO0rLbepI3wFzgeWfOzM5midgjkyvc1BbNW7phHnJ90ReKbKICA2cBE9h6mM7Qdf0G7xDVDPOn40sCoh5bFKw97N9B8IZZtXcIrMBqNcELo45GwVeU4CnnA5w2gwRmWhO0YCUNwiCwR7DCZZWhEGeHgclvlari7FjA8sqQ6NrApPV/G1i4v8QOj5r0Kqt3o9raBitVqtI6N1I2AOiLT58ZAq9eTWw93WPdbpf6IzAQsnajpGRAwJ+dnbNEMkOvXkwAHnF03GR378XZw/UN+qwyE54NWOFjiRTL5BfZcfMFAbgxIeAvL3+w849tZphlNpOaozKkk6zPMHk2gKlGpOdyTJsvsN3nBwRjLBZZp9MZakLAo91ULNGfudbpG/oOs1yR9hsmzwbSWv5KymRzBptNZ9n6480+nMyEgH990iLYk9YpzSDeI6q1Os2mtY8beTaAUccPCxNIAfxwu33BVqo1ViiWCchq4krO85HXuGmAf/32ncrRL5HRHL/lRkqL2G4CoLenYizP0wg7C0BRh9Swwk/Hk9Q/oxs0Ewg/8JCSAUhmIl8o0Y4CUNQ96qWVFR6CMYRfeEjZACRLJ+woqHuy3SDIPwkP+TIAyWZCljbQuOEh3wYgYQLAjb19gvwb8NBYDEAwsVpfI8hB8FgfzZevHFusH43NgJu0sV9DrP1VNRYDbnMes+Tl2OFGvg2Mgkfa4GqNMi/HDrfyZWB5tU6Qw0YeOS9A3R47vMiXgQ88nxE4VQoIe9rMclmvE6OOHV6lbABHX0TpQaUPaIdHO9l1QnbsUDWhbACj//bde5bM5tjS8gqBI6zwQjIT1mMHjuYIlbsyJQMi97d2Gv00gpmsnnfAC9lNiGMHzOAzyrHNyvoOk5IBkSoIgGNXuTM9Q6dMWXshuwncQgp4lKNe1m+YlAzsPtun3MWIAzylzUvbyWQ1gfADDykZiPMbeeTuqBEfJGFic3vHFzykvIj9CtAYCD/w0MQMjEvXBiatf+ABR9gfMYX+IV/oH7MieEF4H3QjQv9XAwSZ4K6CnE49NuefPaxBawILG7tTELZYMHAWMPVzvh+RyC9orHDj7IYcngAAAABJRU5ErkJggg==" InformativeScreenshot="c7c02f2bf5dcaf9c00fd70ea24911043.png" Selector="&lt;html app='msedge.exe' title='Emitir certidão negativa' /&gt;" Url="https://contas.tcu.gov.br/*" />
+      </uix:NApplicationCard.TargetApp>
+    </uix:NApplicationCard>
+  </Sequence>
+</Activity>
