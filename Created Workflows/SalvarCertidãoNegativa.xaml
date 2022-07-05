@@ -1,15 +1,17 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="SalvarCertidãoNegativa" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uix="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="SalvarCertidãoNegativa" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uix="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
     <x:Property Name="in_IdentificadorLegal" Type="InArgument(x:String)" />
     <x:Property Name="in_SavingFolderPath" Type="InArgument(x:String)" />
+    <x:Property Name="in_TransactionItem" Type="InArgument(ui:QueueItem)" />
+    <x:Property Name="in_RelatorioFinal" Type="InArgument(sd:DataTable)" />
   </x:Members>
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>918,1356</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>917.9999999999999,1515</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>SalvarCertidãoNegativa_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
-    <sco:Collection x:TypeArguments="x:String">
+    <scg:List x:TypeArguments="x:String" Capacity="60">
       <x:String>System.Activities</x:String>
       <x:String>System.Activities.Statements</x:String>
       <x:String>System.Activities.Expressions</x:String>
@@ -40,7 +42,10 @@
       <x:String>System.Security</x:String>
       <x:String>System.ComponentModel</x:String>
       <x:String>System.Reflection</x:String>
-    </sco:Collection>
+      <x:String>UiPath.UIAutomationNext.Contracts</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+    </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
     <sco:Collection x:TypeArguments="AssemblyReference">
@@ -79,15 +84,25 @@
       <AssemblyReference>System.Memory</AssemblyReference>
       <AssemblyReference>System.Configuration.ConfigurationManager</AssemblyReference>
       <AssemblyReference>UiPath.Workflow</AssemblyReference>
+      <AssemblyReference>System.Private.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Formatters</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Primitives</AssemblyReference>
+      <AssemblyReference>System.Private.DataContractSerialization</AssemblyReference>
+      <AssemblyReference>System.Data.SqlClient</AssemblyReference>
+      <AssemblyReference>System.Data.Common</AssemblyReference>
+      <AssemblyReference>System.Private.Xml</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="SalvarCertidãoNegativa" sap:VirtualizedContainerService.HintSize="476,1291" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="SalvarCertidãoNegativa" sap:VirtualizedContainerService.HintSize="476,1450" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="x:Boolean" Name="FileExists" />
+    </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click 'menu button  Mais opções'" sap:VirtualizedContainerService.HintSize="434,106" sap2010:WorkflowViewState.IdRef="Click_1" KeyModifiers="None" MouseButton="BTN_LEFT">
+    <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click 'menu button  Mais opções'" sap:VirtualizedContainerService.HintSize="434,106" sap2010:WorkflowViewState.IdRef="Click_3" KeyModifiers="None" MouseButton="BTN_LEFT">
       <ui:Click.CursorPosition>
         <ui:CursorPosition Position="Center">
           <ui:CursorPosition.OffsetX>
@@ -109,52 +124,48 @@
         </ui:Target>
       </ui:Click.Target>
     </ui:Click>
-    <uix:NApplicationCard WebDriverMode="{x:Null}" AttachMode="ByInstance" DisplayName="Use Application: Salvar como" sap:VirtualizedContainerService.HintSize="434,1053" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" ScopeGuid="b936c913-f4c4-41be-83e9-3128a351dd8b" Version="V2">
+    <uix:NApplicationCard WebDriverMode="{x:Null}" AttachMode="ByInstance" DisplayName="Use Application: Salvar como" sap:VirtualizedContainerService.HintSize="434,1059" sap2010:WorkflowViewState.IdRef="NApplicationCard_3" ScopeGuid="b936c913-f4c4-41be-83e9-3128a351dd8b" Version="V2">
       <uix:NApplicationCard.Body>
         <ActivityAction x:TypeArguments="x:Object">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="376,763" sap2010:WorkflowViewState.IdRef="Sequence_3">
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="376,767" sap2010:WorkflowViewState.IdRef="Sequence_10">
             <Sequence.Variables>
-              <Variable x:TypeArguments="x:String" Name="data">
-                <Variable.Default>
-                  <VisualBasicValue x:TypeArguments="x:String" ExpressionText="DateTime.Now.ToString(&quot;ddMMyyyy&quot;)" />
-                </Variable.Default>
-              </Variable>
+              <Variable x:TypeArguments="x:String" Default="[DateTime.Now.ToString(&quot;ddMMyyyy&quot;)]" Name="data" />
             </Sequence.Variables>
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type Into 'Todos os locais'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="334,217" sap2010:WorkflowViewState.IdRef="NTypeInto_1" ScopeIdentifier="b936c913-f4c4-41be-83e9-3128a351dd8b" Text="[in_SavingFolderPath + &quot;[k(enter)]&quot;]" Version="V1">
+            <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type Into 'Todos os locais'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="334,218" sap2010:WorkflowViewState.IdRef="NTypeInto_5" ScopeIdentifier="b936c913-f4c4-41be-83e9-3128a351dd8b" Text="[in_SavingFolderPath + &quot;[k(enter)]&quot;]" Version="V1">
               <uix:NTypeInto.Target>
                 <uix:TargetAnchorable DesignTimeRectangle="152, 41, 35, 33" ElementType="Button" FriendlyName="'Todos os locais'" FullSelectorArgument="&lt;wnd ctrlid='1001' title='Endereço: Downloads' /&gt;&lt;ctrl name='Endereço: Downloads' role='tool bar' /&gt;&lt;ctrl name='Todos os locais' role='split button' /&gt;" FuzzySelectorArgument="&lt;wnd ctrlid='1001' title='Endereço: Downloads' /&gt;&lt;ctrl name='Endereço: Downloads' role='tool bar' /&gt;&lt;ctrl name='Todos os locais' role='split button' automationid='' check:text='Todos os locais' /&gt;" Guid="1cd36427-7f57-4e69-9047-71b002094c72" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAACcAAAAlCAYAAADBa/A+AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAH2SURBVFhH7ZjZSsNAFIa9UBRF3Gtj61aULnHHujxHn6L0rg+giBaXokkrVirVtlRRiTvuCt7UBden6W1/JxFFZVpNbDBKAh8knJnwcWbOnJA8hmGgVbQt53K5oFX0ZVWKLqcUXU4p/0eu92gI9q1RakwNZMkNPs3AdjFHjamBbLmWU43KDTxyaD6ep8bUQJZc/wOHhoMwNaYGsuScdxxMewvUmBrIkuu9DcC4HaHGvoPH44HX66XGaGSVc5Kjw3k0jPpOm/TcfR1A9caSdF/XbkfT8gTM8YkPc7IhCALEy+fzUeOfySrXczCCnhsOju1RmDpsaE8GUbEeBdNmhyk6BeNOBNVhP3UuDYvFgmQy+W3BrHJmkjGrMIbWszk0JcalM65sNYqaBT8q1yMoC03DyDqoczPBsixSqRTS6TSsVit1zCtf7jlx+UyxSSlLhs1FKXOlKzGU8DxqHfLEcpq5N9ocqAhxKEnEURRLoNAfhMEuT0wkp3vuPWKWCohU/tQsEWOpY77C7Xbnrlp/m4xy4heI2EsHH6dJ25oh3UGER989T847nlRxAF1XQXRezkpFQ3vHT8koZxOr9DwEy8k8Gg/DMO+TzrD7UhRVwhLK114KozhOiiMYoL7jp/zNZdUCupxSdDml6HJK0bbc+591WkPDmWPwDHMV68267yRfAAAAAElFTkSuQmCC" InformativeScreenshot="fb4ea4228c775ed5651459dbf4ee96f3.png" ScopeSelectorArgument="&lt;wnd app='msedge.exe' cls='#32770' title='Salvar como' /&gt;" SearchSteps="Selector, FuzzySelector, Image" Visibility="Interactive">
                   <uix:TargetAnchorable.Anchors>
-                    <scg:List x:TypeArguments="uix:ITarget" Capacity="4">
+                    <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
                       <uix:Target DesignTimeRectangle="108, 42, 36, 36" ElementType="Toolbar" FriendlyName="'Faixa para cima'" FullSelectorArgument="&lt;wnd cls='ToolbarWindow32' title='Faixa para cima' /&gt;" FuzzySelectorArgument="&lt;wnd cls='ToolbarWindow32' title='Faixa para cima' check:text='Faixa para cima' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAYAAACM/rhtAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAC/SURBVFhH7dPRCQMhEIThtGEF14EV2MFVeR3YgB1oIVZgGEG4yOXF2YCQEX5k0YfvZV/OubZzWwPP8xSQSkA2AdkEZBOQzQQYQmg5534/vTPRQKBqrQ0HtzWSAg5cjLEDU0rmyGXgwF3X1bz3HYgbsyVyCXjHYb4DMVsil4BYiIFDMxDhHf/GvNoS8DiOj/kJiOZ/K1FLMvoGtEhAtv8AYhlKKSZLMWcC/GUCsgnIJiCbgGwCsm0PRAKyCcjl2hvOtnczk0OwHwAAAABJRU5ErkJggg==" SearchSteps="Selector, FuzzySelector, Image" />
                     </scg:List>
                   </uix:TargetAnchorable.Anchors>
                 </uix:TargetAnchorable>
               </uix:NTypeInto.Target>
             </uix:NTypeInto>
-            <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type Into 'Nome'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="334,217" sap2010:WorkflowViewState.IdRef="NTypeInto_2" ScopeIdentifier="b936c913-f4c4-41be-83e9-3128a351dd8b" Text="[String.Format(&quot;{0}_{1}&quot;, in_IdentificadorLegal, data)]" Version="V1">
+            <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type Into 'Nome'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="334,218" sap2010:WorkflowViewState.IdRef="NTypeInto_6" ScopeIdentifier="b936c913-f4c4-41be-83e9-3128a351dd8b" Text="[String.Format(&quot;{0}_{1}&quot;, in_IdentificadorLegal, data)]" Version="V1">
               <uix:NTypeInto.Target>
                 <uix:TargetAnchorable DesignTimeRectangle="136, 369, 514, 17" ElementType="InputBox" FriendlyName="'Certidão negativa'" FullSelectorArgument="&lt;wnd aaname='Painel do Explorer' cls='DirectUIHWND' /&gt;&lt;wnd aaname='Nome:' cls='ComboBox' /&gt;&lt;wnd ctrlid='1001' /&gt;" FuzzySelectorArgument="&lt;wnd aaname='Painel do Explorer' cls='DirectUIHWND' /&gt;&lt;wnd aaname='Nome:' cls='ComboBox' /&gt;&lt;wnd ctrlid='1001' /&gt;" Guid="b993b366-bbc0-4e72-8af3-ed8d621f9610" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAgYAAAAVCAYAAAA94ia8AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAJhSURBVHhe7dvZdcMgEEDRlKVqVItqoRQ6USWEdTxgQA4/cuxHzj02ZtXXjJDys22bAwAACEgMAACAIDEAAACCxAAAAAgSAwAAIC4Sg92Z0z3Kadze7fei3bjT/5m907Ydzuq22Nc5e/jvhxmMeTPT6wMA4P2NEwMdmNVvRtcvNcF+qu67G+MO/3nYkJHY+P15zN3+cn0AALy/QWKQTgqqpGDJemLwP5AYAAA+Sz8xiKcFF3fp+UQhldI3BUpr9fOHXOwh7RJI1RynMVVbOinIJY59HhNKP3nJ65jHJKfZH+3dvde/X+8nrKFKdX2dxCpMkB/FDK8NAICbjROD6fsETYD3kS4F3hQsH0G46VfVU98SPPf4MoPuW4zHpEA+GhM7pnqMxHXyImOavf99P7qPqoc1VdBP1dKvaMcDAHCvtROD6o47l+qOufSd1J+Sj6ZvDOalqDHNvl4LuM26eVYpYe8r+5mtE7+rZETP3Z0LAID7rb1j0AnQySxQNvVZIK7mD3vp/Z6sJQadva/sZ7aOr4dTh3AaUT5lne5cAADcb5AYePmutgq6Pqil/0oIAdDf68ojg2IeKOt6mqPMXx3dh7VLkI6BtD+mDrLa9br9va/sZ7RO7ntaZz3Z43AuAADuN04Mghi4VNF31G1b91GCetGu1y6NYWr9sl86sUgNIbA2wTY3+cZBUH0hYOcZYinvAizsZ3p9ZVyZX/8WSnttAADcbJ4YfLOYPPROIwAA+FwkBgPxJKB65wAAgM9HYiDUEX8snBYAAL4PiQEAABAkBgAAQJAYAAAAQWIAAACyzf0CRWqGkVCHz/4AAAAASUVORK5CYII=" InformativeScreenshot="63fa11690895ae04ed2b7b4cc59ed2ef.png" IsResponsive="True" ScopeSelectorArgument="&lt;wnd app='msedge.exe' cls='#32770' title='Salvar como' /&gt;" SearchSteps="Selector, FuzzySelector, Image" Visibility="Interactive">
                   <uix:TargetAnchorable.Anchors>
-                    <scg:List x:TypeArguments="uix:ITarget" Capacity="4">
+                    <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
                       <uix:Target DesignTimeRectangle="18, 366, 115, 23" ElementType="Text" FriendlyName="'Nome'" FullSelectorArgument="&lt;wnd aaname='Painel do Explorer' cls='DirectUIHWND' /&gt;&lt;ctrl name='Painel do Explorer' role='pane' /&gt;&lt;ctrl name='Painel de Layout de Pastas' role='pane' /&gt;&lt;ctrl name='Painel de Detalhes' role='pane' /&gt;&lt;ctrl name='Nome:' role='text' /&gt;" FuzzySelectorArgument="&lt;wnd aaname='Painel do Explorer' cls='DirectUIHWND' /&gt;&lt;ctrl name='Painel do Explorer' role='pane' /&gt;&lt;ctrl name='Painel de Layout de Pastas' role='pane' /&gt;&lt;ctrl name='Painel de Detalhes' role='pane' /&gt;&lt;ctrl name='Nome:' role='text' automationid='' check:text='Nome:' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAHcAAAAbCAYAAABGDxCrAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAFVSURBVGhD7ZZtjoQgDIbnVOppOAv38B9H8SaehKVURygfMe6YdbovyRNtYTqJj1RewzB4yTiOp5mmCTwUyFUM5CpknucI5CqExNIVchUCuYqBXMVArmIgVzFduURNZA1ZWD/WLz6MxVbyq3cmzf0NkHsZlriu5LfMQ+5Xs0m0Lgh23sg85H4zh0Qb+vPqTJGPsQnyqX1v49jlycuRzBl3rD5qyjqLt5TjP05erBzIvUwqsXefCI2C8rm3HBIVw01ojDeJWU2ei+sg9y7KB86HqyQfZe6CGF5G9+L3vVjs/jiKg1xJV25NYgtZWD9ShvHUURd7l9y8zhkg9zJSRuC9w/Y8rdll7vONVtuNuU72DSZ+05ZrElvIwvqRMhg+ECX5rKWelVmJszphUFuG3P8L5CoGchXzEbmyKHgGkKuYptyaxBayKHgGkKsYkktArmIgVy2T/wHDVrNEWKM8AgAAAABJRU5ErkJggg==" SearchSteps="Selector, FuzzySelector, Image" />
                     </scg:List>
                   </uix:TargetAnchorable.Anchors>
                 </uix:TargetAnchorable>
               </uix:NTypeInto.Target>
             </uix:NTypeInto>
-            <uix:NClick ClickType="Single" DisplayName="Click para salvar" sap:VirtualizedContainerService.HintSize="334,156" sap2010:WorkflowViewState.IdRef="NClick_1" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="b936c913-f4c4-41be-83e9-3128a351dd8b" Version="V1">
+            <uix:NClick ClickType="Single" DisplayName="Click para salvar" sap:VirtualizedContainerService.HintSize="334,157" sap2010:WorkflowViewState.IdRef="NClick_3" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="b936c913-f4c4-41be-83e9-3128a351dd8b" Version="V1">
               <uix:NClick.Target>
                 <uix:TargetAnchorable DesignTimeRectangle="470, 434, 88, 26" ElementType="Button" FriendlyName="'unchecked'" FullSelectorArgument="&lt;wnd ctrlid='1' title='Sa&amp;amp;lvar' /&gt;" FuzzySelectorArgument="&lt;wnd ctrlid='1' title='Sa&amp;amp;lvar' check:text='unchecked' /&gt;" Guid="8f0a8c35-19d6-431c-b2e2-e9888987610c" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAFwAAAAeCAYAAAChf3k/AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAHNSURBVGhD7ZkxjoMwEEX3TjT0qXMBLsNFUlClzRk4BBUVBVUOMetvwPsNTkgINtFqvvQUEnuy0mMyrOSfPM9FSYcKT4wKT8xC+Ol0kuv1Kvf7XTTbAndwCJdzv55wbGjbVm63m5zPZ8myTNkA3MEhXM6le8JxV7Ax9CXK+8AlnLJjTzh+CtrZ+wGXcMqOPeFIqFDZDsKOVXhkEHaswiODsONjhZe1/ZtDailDexyl2dFJVYTWvheEHR8nvKiMPpJs3lclrS9Q4Z+B7u4qKUJrQVT4h0AgnBeLNX/SlOPnk/BCqg4fUw3dvGe1dW0KzdXz0bUvCDs++KE5yEM8gQ7uarqGVSdzkLysn9eGb25sEHZ8sPARO89JmtemAeH2eupUc82jabU2LQg7/g7hhmKYE7OHKX4BYWnYj46dXu33vFibEoQdH/jQNP+VOAHDaLHi0KFTx1qBD6RhrTN9bnAz+dXahCDs+PCHpoubyX9zXazQR9LGfTTLX69NB8KOv2ak/FcQdqzCI4OwYxUeGYQdq/DIIOzYE64HEPuyegChR2z7snrEpofI+wB3cLh6iAyw4XK5SNM00ve9sgG4g8O5bLAQrsRFhSdGhScll19BYP6Al3b2LwAAAABJRU5ErkJggg==" InformativeScreenshot="d15de6951061ab4c10852de89b9eb6d8.png" ScopeSelectorArgument="&lt;wnd app='msedge.exe' cls='#32770' title='Salvar como' /&gt;" SearchSteps="Selector, FuzzySelector, Image" Visibility="Interactive">
                   <uix:TargetAnchorable.Anchors>
-                    <scg:List x:TypeArguments="uix:ITarget" Capacity="4">
+                    <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
                       <uix:Target DesignTimeRectangle="570, 434, 88, 26" ElementType="Button" FriendlyName="'Cancelar'" FullSelectorArgument="&lt;wnd ctrlid='2' title='Cancelar' /&gt;" FuzzySelectorArgument="&lt;wnd ctrlid='2' title='Cancelar' check:text='Cancelar' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAFwAAAAeCAYAAAChf3k/AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAHKSURBVGhD7Zk7jsIwEIb3TmlSRZwjR6BB4gJpaBAVNY2v4qPkJLP5bQfGifMg6wwrMZY+Cb/J58mA5J+yLEmRQ4ULo8KFGQmvqopOpxPd73d6PB7KBuAODuFy6DcSjgHX65XO5zMdDgcqikLZANzBIVwOpUfCcSoYmFpEeR+4hFPuOBKOV0EjOx9wCafccSQc+Sc1UdkOnHLHKnxnVLgwHxJek2npVVpDdXLcHjRkqSVTp/r2R154bbrHJbJN3GZ4fVe+SriP7Ei2ON8k3EW3pSbVF2iszzKu2Ca0B0nm1dmams2LU9TzQMPb5Eu/byx8bj9r3bs4+33fRV746nzNxeAzE+Is9SK87PgA+jkskrs5fsygPTne7zde8+/8uwj3MvvCBXBJrD61ZhTdobgDG6y1ar98yApfyuGRPIydErBWeOpwp+bO7ZcPYeEdIaKS/1LQ16ccJ2NKAK/PpZSp9jB39X75kBcO3MOx8szrXp5vs2TXRPiz/irpH82ujFLK2v3y8RnhX4wKF0aFC6PChZkVrhcQeVm8gNArtrwsXrHpJXIe4A4OFy+RAQYcj0e6XC50u92UDcAdHA5lg5FwZV9UuDAqXJSSfgGAPmHKlJHZ3AAAAABJRU5ErkJggg==" SearchSteps="Selector, FuzzySelector, Image" />
                     </scg:List>
                   </uix:TargetAnchorable.Anchors>
@@ -168,5 +179,15 @@
         <uix:TargetApp Area="2603, 49, 683, 480" FilePath="C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe" IconBase64="iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAMMSURBVDhPXdJrSFNhHAbwYypep0sphCgJ+lRpmy5nOlAqu+jUee/CijI1AyuIRCnTMG94Ny9l80NUiF2QIAoq3cXpvNfmLtmmZqSGRousVUh7end2rPSB/7f3+Z33/XOo1dkp+yrhKRbMwYoZBPUZwFPpsGt4FBFqhWWv7qlMaOzwZ46uDK/7p4An/W7hyb6AK58Bt2cSgUo9OH0aMq8QNtKDSM1zCI13ranvmyVMzZ5gUg7qXrQGSc3gyj5ih3waAQojDQQo7UDIYB/26R/g4HgHxLPlODWf+w/hdlksBABH+gkc2RwC5e+wTW7AVoWGjBpc1RBCh7uxR3sfscZWHJu9goz5HOSYTwgozssfEk7XIjZJDPAtG4BPxWusq1TDr0aFze0jNGCbIJUcgpEn2K9thchYhayFbOR8PmKitnfO/2YX94JVqoN3lRFrayfg2zCJ9c1T8GuZwIamARrgKKUIH7qPaF0NkkxFEE+fRsbsIVAbJVNwK1TDo2wcrAojQUx2pGQU/jWa234tJvmWh/3gq+4hcqge0WNliNeeg/jdSWR+EIKyfdWlSA+3a2/gXjoOz4q38Loog0dMpYpZEcV/3DsRqmxBxEA1okZLaCBNn4LjEwRwKtDBudAAl6sGuNqQYj08RNfBSrxxgelTwdJbEr68AYK+ahwYzEK8Oh2HDYkQGyLN1JpLOjgV6P8ibmdfwFPUCFbSTQXTJ0DrHF9ajnBFEXb3ZEI0IkKqOsp6VBuWRjnk68w2xJFB3NMfwTOhGZ6JLVZWSluaDQjpLhHwpaWdEfLsuaieNLOwP7YzeTRSQOtUnlZCENDIZT1csp/ZAdstkiVWr6TWlX8dk7Ux1TRuT57W4pCvpRHn80pSbqIBG0QAeCXeWPIWNZu84xtl7Lh6M1tYu0QAC9MmydMKyFiXEXdxux2Ib4BXQpMNAAFAABAABLASgHnCcuwIfRPHPA1BOuzPiK0DK64O3nEN9LBj6ywEWFX+P2QnTvlj3xzzx+CcOwzXMy/gQRbrI77ziwBtzCkmFPUHUkTzg+CHHvkAAAAASUVORK5CYII=" InformativeScreenshot="296cb6484d2396e02cf22807232f6d4a.png" Selector="&lt;wnd app='msedge.exe' cls='#32770' title='Salvar como' /&gt;" />
       </uix:NApplicationCard.TargetApp>
     </uix:NApplicationCard>
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke AdicionarDadosNoRelatorioFinal workflow" sap:VirtualizedContainerService.HintSize="434,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" UnSafe="False" WorkflowFileName="Created Workflows\AdicionarDadosNoRelatorioFinal.xaml">
+      <ui:InvokeWorkflowFile.Arguments>
+        <InArgument x:TypeArguments="ui:QueueItem" x:Key="in_TransactionItem">[in_TransactionItem]</InArgument>
+        <InArgument x:TypeArguments="sd:DataTable" x:Key="in_RelatorioFinal">[in_RelatorioFinal]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_Status">OK</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_Motivo">
+          <Literal x:TypeArguments="x:String" Value="" />
+        </InArgument>
+      </ui:InvokeWorkflowFile.Arguments>
+    </ui:InvokeWorkflowFile>
   </Sequence>
 </Activity>
