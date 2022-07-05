@@ -280,7 +280,7 @@
             </uix:NCheckState>
             <uix:NCheckState Exists="{x:Null}" DisplayName="Check App State 'Ocorreu 1 erro'" sap:VirtualizedContainerService.HintSize="1472,1200" sap2010:WorkflowViewState.IdRef="NCheckState_1" ScopeIdentifier="b8b375ca-4929-4c58-8a67-23c37e444f12" Timeout="2" Version="V1">
               <uix:NCheckState.IfExists>
-                <Sequence DisplayName="Target appears" sap:VirtualizedContainerService.HintSize="473,569" sap2010:WorkflowViewState.IdRef="Sequence_6">
+                <Sequence DisplayName="Target appears" sap:VirtualizedContainerService.HintSize="473,570" sap2010:WorkflowViewState.IdRef="Sequence_6">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -327,7 +327,7 @@
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <uix:NCheckState Exists="{x:Null}" DisplayName="Check App State 'Certidão'" sap:VirtualizedContainerService.HintSize="903,890" sap2010:WorkflowViewState.IdRef="NCheckState_2" ScopeIdentifier="b8b375ca-4929-4c58-8a67-23c37e444f12" Timeout="2" Version="V1">
+                  <uix:NCheckState Exists="{x:Null}" DisplayName="Check App State 'Certidão'" sap:VirtualizedContainerService.HintSize="903,890" sap2010:WorkflowViewState.IdRef="NCheckState_2" ScopeIdentifier="b8b375ca-4929-4c58-8a67-23c37e444f12" Timeout="3" Version="V1">
                     <uix:NCheckState.IfExists>
                       <Sequence DisplayName="Target appears" sap:VirtualizedContainerService.HintSize="473,674" sap2010:WorkflowViewState.IdRef="Sequence_9">
                         <sap:WorkflowViewStateService.ViewState>
@@ -389,7 +389,7 @@
                       </Sequence>
                     </uix:NCheckState.IfExists>
                     <uix:NCheckState.IfNotExists>
-                      <Sequence DisplayName="Target does not appear" sap:VirtualizedContainerService.HintSize="376,250" sap2010:WorkflowViewState.IdRef="Sequence_10">
+                      <Sequence DisplayName="Target does not appear" sap:VirtualizedContainerService.HintSize="376,351" sap2010:WorkflowViewState.IdRef="Sequence_10">
                         <sap:WorkflowViewStateService.ViewState>
                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -406,6 +406,14 @@
                             </uix:TargetAnchorable>
                           </uix:NClick.Target>
                         </uix:NClick>
+                        <Assign sap:VirtualizedContainerService.HintSize="334,61" sap2010:WorkflowViewState.IdRef="Assign_2">
+                          <Assign.To>
+                            <OutArgument x:TypeArguments="x:String">[out_Status]</OutArgument>
+                          </Assign.To>
+                          <Assign.Value>
+                            <InArgument x:TypeArguments="x:String">OK</InArgument>
+                          </Assign.Value>
+                        </Assign>
                       </Sequence>
                     </uix:NCheckState.IfNotExists>
                     <uix:NCheckState.Target>
