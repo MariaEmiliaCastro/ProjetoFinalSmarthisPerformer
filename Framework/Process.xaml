@@ -3,12 +3,12 @@
     <x:Property sap2010:Annotation.AnnotationText="Transaction item to be processed." Name="in_TransactionItem" Type="InArgument(ui:QueueItem)" />
     <x:Property sap2010:Annotation.AnnotationText="Dictionary structure to store configuration data of the process (settings, constants and assets)." Name="in_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
     <x:Property Name="in_SavingFolderPath" Type="InArgument(x:String)" />
-    <x:Property Name="in_RelatorioFinal" Type="InArgument(sd:DataTable)" />
+    <x:Property Name="in_dtRelatorioFinal" Type="InArgument(sd:DataTable)" />
   </x:Members>
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1295,1923</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1295,1908</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ProcessTransaction_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="50">
@@ -91,7 +91,7 @@
       <AssemblyReference>System.Private.Xml</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Invoke major steps of the business process, which are usually implemented by multiple subworkflows.&#xA;&#xA;If a BusinessRuleException is thrown, the transaction is skipped. &#xA;If another kind of exception occurs, the current transaction can be retried. " DisplayName="Process" sap:VirtualizedContainerService.HintSize="1305,1858" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="Invoke major steps of the business process, which are usually implemented by multiple subworkflows.&#xA;&#xA;If a BusinessRuleException is thrown, the transaction is skipped. &#xA;If another kind of exception occurs, the current transaction can be retried. " DisplayName="Process" sap:VirtualizedContainerService.HintSize="1305,1843" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="IdentificadorLegal" />
       <Variable x:TypeArguments="x:String" Name="TipoDeIdentificador" />
@@ -103,14 +103,14 @@
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:LogMessage DisplayName="Log Message Process Start" sap:VirtualizedContainerService.HintSize="1263,93" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Started Process&quot;]" />
+    <ui:LogMessage DisplayName="Log Message Process Start" sap:VirtualizedContainerService.HintSize="1263,91" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Started Process&quot;]" />
     <ui:Comment DisplayName="Comment (placeholder)" sap:VirtualizedContainerService.HintSize="1263,55" sap2010:WorkflowViewState.IdRef="Comment_1" Text="//  Invoke steps of the process" />
-    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke VerificaValidadeIdentificadorLegal workflow" sap:VirtualizedContainerService.HintSize="1263,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Created Workflows\VerificaValidadeIdentificadorLegal.xaml">
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke VerificaValidadeIdentificadorLegal workflow" sap:VirtualizedContainerService.HintSize="1263,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Created Workflows\VerificaValidadeIdentificadorLegal.xaml">
       <ui:InvokeWorkflowFile.Arguments>
         <OutArgument x:TypeArguments="x:String" x:Key="out_IdentificadorLegal">[IdentificadorLegal]</OutArgument>
         <InArgument x:TypeArguments="x:String" x:Key="in_IdentificadorLegal">[in_TransactionItem.SpecificContent("CPF/CNPJ").ToString()]</InArgument>
         <OutArgument x:TypeArguments="x:String" x:Key="out_TipoIdentificador">[TipoDeIdentificador]</OutArgument>
-        <InArgument x:TypeArguments="sd:DataTable" x:Key="in_RelatorioFinal">[in_RelatorioFinal]</InArgument>
+        <InArgument x:TypeArguments="sd:DataTable" x:Key="in_RelatorioFinal">[in_dtRelatorioFinal]</InArgument>
         <InArgument x:TypeArguments="ui:QueueItem" x:Key="in_TransactionItem">[in_TransactionItem]</InArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
@@ -123,16 +123,16 @@
       </Assign.Value>
     </Assign>
     <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="1263,93" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[IdentificadorLegal]" />
-    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke VerificaSeJaExisteCertidao workflow" sap:VirtualizedContainerService.HintSize="1263,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_4" UnSafe="False" WorkflowFileName="Created Workflows\VerificaSeJaExisteCertidao.xaml">
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke VerificaSeJaExisteCertidao workflow" sap:VirtualizedContainerService.HintSize="1263,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_4" UnSafe="False" WorkflowFileName="Created Workflows\VerificaSeJaExisteCertidao.xaml">
       <ui:InvokeWorkflowFile.Arguments>
         <InArgument x:TypeArguments="x:String" x:Key="in_SavingFolderPath">[in_SavingFolderPath]</InArgument>
         <InArgument x:TypeArguments="x:String" x:Key="in_IdentificadorLegal">[IdentificadorLegal]</InArgument>
         <OutArgument x:TypeArguments="x:Boolean" x:Key="out_JaExisteCertidao">[JaExisteCertidao]</OutArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
-    <If Condition="[Not JaExisteCertidao]" sap:VirtualizedContainerService.HintSize="1263,923" sap2010:WorkflowViewState.IdRef="If_1">
+    <If Condition="[Not JaExisteCertidao]" sap:VirtualizedContainerService.HintSize="1263,916" sap2010:WorkflowViewState.IdRef="If_1">
       <If.Then>
-        <Sequence DisplayName="Procede para a geração de Certidão" sap:VirtualizedContainerService.HintSize="842,763" sap2010:WorkflowViewState.IdRef="Sequence_2">
+        <Sequence DisplayName="Procede para a geração de Certidão" sap:VirtualizedContainerService.HintSize="842,758" sap2010:WorkflowViewState.IdRef="Sequence_2">
           <Sequence.Variables>
             <Variable x:TypeArguments="x:String" Name="Status" />
           </Sequence.Variables>
@@ -141,33 +141,40 @@
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke EmitirCertidãoNegativa workflow" sap:VirtualizedContainerService.HintSize="800,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_5" UnSafe="False" WorkflowFileName="Created Workflows\EmitirCertidãoNegativa.xaml">
+          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke EmitirCertidãoNegativa workflow" sap:VirtualizedContainerService.HintSize="800,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_5" UnSafe="False" WorkflowFileName="Created Workflows\EmitirCertidãoNegativa.xaml">
             <ui:InvokeWorkflowFile.Arguments>
-              <InArgument x:TypeArguments="x:String" x:Key="in_TipoDeIdentificador">[TipoDeIdentificador]</InArgument>
-              <InArgument x:TypeArguments="x:String" x:Key="in_IdentificadorLegal">[IdentificadorLegal]</InArgument>
-              <InArgument x:TypeArguments="ui:QueueItem" x:Key="in_TransactionItem">[in_TransactionItem]</InArgument>
-              <InArgument x:TypeArguments="sd:DataTable" x:Key="in_RelatorioFinal">[in_RelatorioFinal]</InArgument>
-              <OutArgument x:TypeArguments="x:String" x:Key="out_Status">[Status]</OutArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="in_TipoDeIdentificador">
+                <VisualBasicValue x:TypeArguments="x:String" ExpressionText="TipoDeIdentificador" />
+              </InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="in_IdentificadorLegal">
+                <VisualBasicValue x:TypeArguments="x:String" ExpressionText="IdentificadorLegal" />
+              </InArgument>
+              <InArgument x:TypeArguments="ui:QueueItem" x:Key="in_TransactionItem">
+                <VisualBasicValue x:TypeArguments="ui:QueueItem" ExpressionText="in_TransactionItem" />
+              </InArgument>
+              <OutArgument x:TypeArguments="x:String" x:Key="out_Status">
+                <VisualBasicReference x:TypeArguments="x:String" ExpressionText="Status" />
+              </OutArgument>
+              <InArgument x:TypeArguments="sd:DataTable" x:Key="in_dtRelatorioFinal">
+                <VisualBasicValue x:TypeArguments="sd:DataTable" ExpressionText="in_dtRelatorioFinal" />
+              </InArgument>
             </ui:InvokeWorkflowFile.Arguments>
           </ui:InvokeWorkflowFile>
-          <If Condition="[Status.Equals(&quot;INIDONEO&quot;)]" sap:VirtualizedContainerService.HintSize="800,518" sap2010:WorkflowViewState.IdRef="If_2">
+          <If Condition="[Status.Equals(&quot;INIDONEO&quot;)]" sap:VirtualizedContainerService.HintSize="800,514" sap2010:WorkflowViewState.IdRef="If_2">
             <If.Then>
-              <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,93" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[&quot;Identificador Inidoneo&quot;]" />
+              <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[&quot;Identificador Inidoneo&quot;]" />
             </If.Then>
             <If.Else>
-              <Sequence sap:VirtualizedContainerService.HintSize="421,358" sap2010:WorkflowViewState.IdRef="Sequence_4">
+              <Sequence sap:VirtualizedContainerService.HintSize="421,356" sap2010:WorkflowViewState.IdRef="Sequence_4">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
-                <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke AdicionarDadosNoRelatorioFinal workflow" sap:VirtualizedContainerService.HintSize="379,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_8" UnSafe="False" WorkflowFileName="Created Workflows\AdicionarDadosNoRelatorioFinal.xaml">
+                <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke AdicionarDadosNoRelatorioFinal workflow" sap:VirtualizedContainerService.HintSize="379,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_8" UnSafe="False" WorkflowFileName="Created Workflows\AdicionarDadosNoRelatorioFinal.xaml">
                   <ui:InvokeWorkflowFile.Arguments>
                     <InArgument x:TypeArguments="ui:QueueItem" x:Key="in_TransactionItem">
                       <VisualBasicValue x:TypeArguments="ui:QueueItem" ExpressionText="in_TransactionItem" />
-                    </InArgument>
-                    <InArgument x:TypeArguments="sd:DataTable" x:Key="in_RelatorioFinal">
-                      <VisualBasicValue x:TypeArguments="sd:DataTable" ExpressionText="in_RelatorioFinal" />
                     </InArgument>
                     <InArgument x:TypeArguments="x:String" x:Key="in_Status">
                       <Literal x:TypeArguments="x:String">OK</Literal>
@@ -175,14 +182,25 @@
                     <InArgument x:TypeArguments="x:String" x:Key="in_Motivo">
                       <Literal x:TypeArguments="x:String" xml:space="preserve"> </Literal>
                     </InArgument>
+                    <InArgument x:TypeArguments="sd:DataTable" x:Key="in_dtRelatorioFinal">
+                      <VisualBasicValue x:TypeArguments="sd:DataTable" ExpressionText="in_dtRelatorioFinal" />
+                    </InArgument>
                   </ui:InvokeWorkflowFile.Arguments>
                 </ui:InvokeWorkflowFile>
-                <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke SalvarCertidãoNegativa workflow" sap:VirtualizedContainerService.HintSize="379,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_7" UnSafe="False" WorkflowFileName="Created Workflows\SalvarCertidãoNegativa.xaml">
+                <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke SalvarCertidãoNegativa workflow" sap:VirtualizedContainerService.HintSize="379,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_7" UnSafe="False" WorkflowFileName="Created Workflows\SalvarCertidãoNegativa.xaml">
                   <ui:InvokeWorkflowFile.Arguments>
-                    <InArgument x:TypeArguments="x:String" x:Key="in_IdentificadorLegal">[IdentificadorLegal]</InArgument>
-                    <InArgument x:TypeArguments="x:String" x:Key="in_SavingFolderPath">[in_SavingFolderPath]</InArgument>
-                    <InArgument x:TypeArguments="ui:QueueItem" x:Key="in_TransactionItem">[in_TransactionItem]</InArgument>
-                    <InArgument x:TypeArguments="sd:DataTable" x:Key="in_RelatorioFinal">[in_RelatorioFinal]</InArgument>
+                    <InArgument x:TypeArguments="x:String" x:Key="in_IdentificadorLegal">
+                      <VisualBasicValue x:TypeArguments="x:String" ExpressionText="IdentificadorLegal" />
+                    </InArgument>
+                    <InArgument x:TypeArguments="x:String" x:Key="in_SavingFolderPath">
+                      <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_SavingFolderPath" />
+                    </InArgument>
+                    <InArgument x:TypeArguments="ui:QueueItem" x:Key="in_TransactionItem">
+                      <VisualBasicValue x:TypeArguments="ui:QueueItem" ExpressionText="in_TransactionItem" />
+                    </InArgument>
+                    <InArgument x:TypeArguments="sd:DataTable" x:Key="in_dtRelatorioFinal">
+                      <VisualBasicValue x:TypeArguments="sd:DataTable" ExpressionText="in_dtRelatorioFinal" />
+                    </InArgument>
                   </ui:InvokeWorkflowFile.Arguments>
                 </ui:InvokeWorkflowFile>
               </Sequence>
@@ -191,13 +209,13 @@
         </Sequence>
       </If.Then>
       <If.Else>
-        <Sequence sap:VirtualizedContainerService.HintSize="376,185" sap2010:WorkflowViewState.IdRef="Sequence_3">
+        <Sequence sap:VirtualizedContainerService.HintSize="376,183" sap2010:WorkflowViewState.IdRef="Sequence_3">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,93" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Info" Message="[&quot;Já existe certidão&quot;]" />
+          <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Info" Message="[&quot;Já existe certidão&quot;]" />
         </Sequence>
       </If.Else>
     </If>

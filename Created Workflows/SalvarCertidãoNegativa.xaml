@@ -3,7 +3,7 @@
     <x:Property Name="in_IdentificadorLegal" Type="InArgument(x:String)" />
     <x:Property Name="in_SavingFolderPath" Type="InArgument(x:String)" />
     <x:Property Name="in_TransactionItem" Type="InArgument(ui:QueueItem)" />
-    <x:Property Name="in_RelatorioFinal" Type="InArgument(sd:DataTable)" />
+    <x:Property Name="in_dtRelatorioFinal" Type="InArgument(sd:DataTable)" />
   </x:Members>
   <VisualBasic.Settings>
     <x:Null />

@@ -3,8 +3,8 @@
     <x:Property Name="in_TipoDeIdentificador" Type="InArgument(x:String)" />
     <x:Property Name="in_IdentificadorLegal" Type="InArgument(x:String)" />
     <x:Property Name="in_TransactionItem" Type="InArgument(ui:QueueItem)" />
-    <x:Property Name="in_RelatorioFinal" Type="InArgument(sd:DataTable)" />
     <x:Property Name="out_Status" Type="OutArgument(x:String)" />
+    <x:Property Name="in_dtRelatorioFinal" Type="InArgument(sd:DataTable)" />
   </x:Members>
   <VisualBasic.Settings>
     <x:Null />
@@ -230,7 +230,7 @@
                             <uix:NClick.Target>
                               <uix:TargetAnchorable BrowserURL="https://contas.tcu.gov.br/ords/f?p=704144:3:11858491693996::::P3_TIPO:CPF" DesignTimeRectangle="975, 323, 78, 32" ElementType="Button" FriendlyName="'Emitir'" FullSelectorArgument="&lt;webctrl id='B28282078504980490841' tag='BUTTON' /&gt;" FuzzySelectorArgument="&lt;webctrl id='B28282078504980490841' tag='BUTTON' type='button' class='t-Button t-Button--icon t-Button--iconLeft t-Button--hot' aaname='Emitir' check:innerText='Emitir' /&gt;" Guid="1b5aaf8d-92ad-4036-99b1-f634337967e3" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAFIAAAAkCAYAAAAaV21HAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAHDSURBVGhD7Zq/S8NAFMf9ZxzsLjiJm3+A/4GLk+Lfkb3/gThIhoC0m3MDQt0cChG6BVwkga7Pe7m7cDkvba55nml8X/jQXu4uJZ+8/KDcEXBIwiKJUot8iF/g9PIOjs+umQ6gK3SmU4vEjpPzW5hc3DMdQFfoTKcWiZZdE5h20JkOi+wBiySCRRLBIolgkUSQioxeN2oP7nwuZ3DlmDcGSEXGa4Bs7u6b3Mwg/QIoRioziMj4Q2x/Ft9HLDOMSHP7SGWGF4kImW8lwPuTsc0C5zSzgXTqHtvKPJdT14v9+j0IItJ+CGVJ+1iNFLmHPBMlqlgmsj1dQWG27f4eBBHpIohIi2gpTyiFOJvDE6mrqDSrPIesGi/jqjgtsU65gqhRkQmk4naDv1moT5+TOHCRZnKIsU8dvL6v6XFSxgKyqtUcq8X+qEinyO7HYPJrIh/FK48reH+0x7qQgrZUpJKhRcp9aRl9RKq5ngy8IlnkTv5C5Pb2QEXSXNrNVOP7iKz7RVofNiOryEODRRJBKnLX32jN+L2nDR1Skf8ZFkkEiySCRRLBIolgkUQ4RfIiKj9aF1Hxsj4/0JVzWR+nX1gkSQC+AZF07pmDx/XHAAAAAElFTkSuQmCC" InformativeScreenshot="9655785eef836beac7546378f634dc48.png" ScopeSelectorArgument="&lt;html app='msedge.exe' title='Emitir certidão negativa' /&gt;" SearchSteps="FuzzySelector, Image" Visibility="Interactive">
                                 <uix:TargetAnchorable.Anchors>
-                                  <scg:List x:TypeArguments="uix:ITarget" Capacity="4">
+                                  <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
                                     <uix:Target DesignTimeRectangle="1007, 331, 34, 16" ElementType="Text" FriendlyName="'Emitir'" FullSelectorArgument="&lt;webctrl aaname='Emitir' parentid='B28282078504980490841' tag='SPAN' /&gt;" FuzzySelectorArgument="&lt;webctrl aaname='Emitir' parentid='B28282078504980490841' tag='SPAN' type='' class='t-Button-label' check:innerText='Emitir' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAACYAAAAUCAYAAADhj08IAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAADTSURBVEhL7ZIxDoMwDAD7nr6iT+Id7PyCgYkvwMQDkDKwZSZSVhdwTJM0NBg6UDWWTshKYl9MbvdHBlckiXFJYlx+Q6wcwAsNbeEeiFJLPDo0x9YNAbEDMjam8dhVmBc9jHbur2/wfTGPvNO7RHz2idEtFTbBkCCsXx+aCEmtoXrInYlV0Ko501Nt/FLvyBuTUFrN6F3QPizegFgydy+Jvk0sKAYg6pfHDG9ipjiJYTEqfkbMnLX4X7HPOUvMjaX5GbF1fYrNxx8RuxJJjEsS45HBE6S2sMDDh0pCAAAAAElFTkSuQmCC" SearchSteps="FuzzySelector, Image" />
                                   </scg:List>
                                 </uix:TargetAnchorable.Anchors>
@@ -312,7 +312,7 @@
                   <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke AdicionarDadosNoRelatorioFinal workflow" sap:VirtualizedContainerService.HintSize="431,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Created Workflows\AdicionarDadosNoRelatorioFinal.xaml">
                     <ui:InvokeWorkflowFile.Arguments>
                       <InArgument x:TypeArguments="ui:QueueItem" x:Key="in_TransactionItem">[in_TransactionItem]</InArgument>
-                      <InArgument x:TypeArguments="sd:DataTable" x:Key="in_RelatorioFinal">[in_RelatorioFinal]</InArgument>
+                      <InArgument x:TypeArguments="sd:DataTable" x:Key="in_RelatorioFinal">[in_dtRelatorioFinal]</InArgument>
                       <InArgument x:TypeArguments="x:String" x:Key="in_Status">[Status]</InArgument>
                       <InArgument x:TypeArguments="x:String" x:Key="in_Motivo">[Motivo]</InArgument>
                     </ui:InvokeWorkflowFile.Arguments>
@@ -381,7 +381,7 @@
                         <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke AdicionarDadosNoRelatorioFinal workflow" sap:VirtualizedContainerService.HintSize="431,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="Created Workflows\AdicionarDadosNoRelatorioFinal.xaml">
                           <ui:InvokeWorkflowFile.Arguments>
                             <InArgument x:TypeArguments="ui:QueueItem" x:Key="in_TransactionItem">[in_TransactionItem]</InArgument>
-                            <InArgument x:TypeArguments="sd:DataTable" x:Key="in_RelatorioFinal">[in_RelatorioFinal]</InArgument>
+                            <InArgument x:TypeArguments="sd:DataTable" x:Key="in_RelatorioFinal">[in_dtRelatorioFinal]</InArgument>
                             <InArgument x:TypeArguments="x:String" x:Key="in_Status">[Status]</InArgument>
                             <InArgument x:TypeArguments="x:String" x:Key="in_Motivo">[Motivo]</InArgument>
                           </ui:InvokeWorkflowFile.Arguments>

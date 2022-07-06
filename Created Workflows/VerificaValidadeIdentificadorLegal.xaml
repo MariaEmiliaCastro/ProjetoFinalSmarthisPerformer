@@ -3,8 +3,8 @@
     <x:Property Name="out_IdentificadorLegal" Type="OutArgument(x:String)" />
     <x:Property Name="in_IdentificadorLegal" Type="InArgument(x:String)" />
     <x:Property Name="out_TipoIdentificador" Type="OutArgument(x:String)" />
-    <x:Property Name="in_RelatorioFinal" Type="InArgument(sd:DataTable)" />
     <x:Property Name="in_TransactionItem" Type="InArgument(ui:QueueItem)" />
+    <x:Property Name="in_dtRelatorioFinal" Type="InArgument(sd:DataTable)" />
   </x:Members>
   <VisualBasic.Settings>
     <x:Null />
@@ -261,18 +261,10 @@
                           </sap:WorkflowViewStateService.ViewState>
                           <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke AdicionarDadosNoRelatorioFinal workflow" sap:VirtualizedContainerService.HintSize="379,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Created Workflows\AdicionarDadosNoRelatorioFinal.xaml">
                             <ui:InvokeWorkflowFile.Arguments>
-                              <InArgument x:TypeArguments="ui:QueueItem" x:Key="in_TransactionItem">
-                                <VisualBasicValue x:TypeArguments="ui:QueueItem" ExpressionText="in_TransactionItem" />
-                              </InArgument>
-                              <InArgument x:TypeArguments="sd:DataTable" x:Key="in_RelatorioFinal">
-                                <VisualBasicValue x:TypeArguments="sd:DataTable" ExpressionText="in_RelatorioFinal" />
-                              </InArgument>
-                              <InArgument x:TypeArguments="x:String" x:Key="in_Status">
-                                <VisualBasicValue x:TypeArguments="x:String" ExpressionText="Status" />
-                              </InArgument>
-                              <InArgument x:TypeArguments="x:String" x:Key="in_Motivo">
-                                <VisualBasicValue x:TypeArguments="x:String" ExpressionText="Motivo" />
-                              </InArgument>
+                              <InArgument x:TypeArguments="ui:QueueItem" x:Key="in_TransactionItem">[in_TransactionItem]</InArgument>
+                              <InArgument x:TypeArguments="sd:DataTable" x:Key="in_RelatorioFinal">[in_dtRelatorioFinal]</InArgument>
+                              <InArgument x:TypeArguments="x:String" x:Key="in_Status">[Status]</InArgument>
+                              <InArgument x:TypeArguments="x:String" x:Key="in_Motivo">[Motivo]</InArgument>
                             </ui:InvokeWorkflowFile.Arguments>
                             <sap:WorkflowViewStateService.ViewState>
                               <scg:Dictionary x:TypeArguments="x:String, x:Object">
